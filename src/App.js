@@ -4,16 +4,12 @@ import Appbar from './components/Appbar/Appbar';
 import HeroContainer from './components/HeroContainer/HeroContainer';
 
 const Div = styled.div`
-    min-height: 100vh;
+    min-height: 1000px;
     width: 100vw;
-    padding-top: 70px;
-    background-color: #191919;
+    background-color: white;
     position: relative;
 `
 
-const Title = styled.h1`
-    color: white;
-`
 
 class App extends Component {
   render() {

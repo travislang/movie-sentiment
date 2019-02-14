@@ -36,13 +36,16 @@ const Button = styled.button`
     .searchIcon:hover {
         color: #9e9e9e;
     }
+    .searchIcon:active {
+        color: #616161;
+    }
 `
 
 class SearchInput extends Component {
     render() {
         return (
             <Root>
-                <Searchbar type='search' />
+                <Searchbar type='search' placeholder='Search for a movie...' />
                 <Button>
                     <Icon
                         size={45}

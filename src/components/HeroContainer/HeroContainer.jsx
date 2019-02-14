@@ -5,11 +5,13 @@ import Icon from 'react-icons-kit';
 import { search } from 'react-icons-kit/icomoon/search'
 
 const Root = styled.div`
-    height: calc(100vh - 55px);
+    height: calc(100vh);
     width: 100vw;
+    background-color: #191919;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 0px 0px 300px 0px;
 `
 
 class HeroContainer extends Component {

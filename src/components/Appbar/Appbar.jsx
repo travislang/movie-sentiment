@@ -4,14 +4,13 @@ import AppLogo from './AppLogo';
 
 const Div = styled.div`
     height: 55px;
-    width: 100vw;
+    width: calc(100vw - 64px);
     background-color: #191919;
     padding: 8px 32px;
     display: flex;
     align-items: center;
     position: absolute;
     top: 0;
-    left: 0;
 `
 const AppLogoContainer = styled.div`
     height: 45px;
