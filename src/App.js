@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Appbar from './components/Appbar/Appbar';
+import HeroContainer from './components/HeroContainer/HeroContainer';
 
 const Div = styled.div`
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
+    padding-top: 70px;
     background-color: #191919;
+    position: relative;
 `
 
 const Title = styled.h1`
@@ -17,6 +20,7 @@ class App extends Component {
     return (
       <Div>
         <Appbar />
+        <HeroContainer />
       </Div>
     );
   }

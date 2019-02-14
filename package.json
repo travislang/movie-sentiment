@@ -13,6 +13,7 @@
     "pg-hstore": "^2.3.2",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
+    "react-icons-kit": "^1.2.1",
     "react-scripts": "2.1.5",
     "sequelize": "^4.42.0",
     "styled-components": "^4.1.3"

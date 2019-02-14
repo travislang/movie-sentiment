@@ -9,6 +9,9 @@ const Div = styled.div`
     padding: 8px 32px;
     display: flex;
     align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
 `
 const AppLogoContainer = styled.div`
     height: 45px;
@@ -32,7 +35,10 @@ class Appbar extends Component {
             <Div>
                 <AppLogoContainer>
                     {AppLogo}
-                    <Title><TitleSpan as="span">Movie</TitleSpan>Ai</Title>
+                    <Title>
+                        <TitleSpan as="span">Movie</TitleSpan>
+                        Ai
+                    </Title>
                 </AppLogoContainer>
             </Div>
         );

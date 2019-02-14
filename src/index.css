@@ -348,3 +348,10 @@ template {
 [hidden] {
   display: none;
 }
+
+textarea:focus, 
+input:focus,
+button:focus
+{
+    outline: none;
+}
