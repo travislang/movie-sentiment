@@ -16,6 +16,7 @@ const AppLogoContainer = styled.div`
     height: 45px;
     display: flex;
     align-items: center;
+    flex-grow: 1;
 `
 
 const Title = styled.h1`
@@ -26,6 +27,15 @@ const Title = styled.h1`
 `
 const TitleSpan = styled(Title)`
     font-weight: 200;
+`
+
+const About = styled.button`
+    letter-spacing: 3px;
+    color: white;
+    &:hover {
+        cursor: pointer;
+        color: #9e9e9e;
+    }
 `
 
 class Appbar extends Component {
@@ -39,6 +49,9 @@ class Appbar extends Component {
                         Ai
                     </Title>
                 </AppLogoContainer>
+                <About>
+                    About
+                </About>
             </Div>
         );
     }

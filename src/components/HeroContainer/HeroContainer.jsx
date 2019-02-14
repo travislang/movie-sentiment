@@ -5,7 +5,7 @@ import Icon from 'react-icons-kit';
 import { search } from 'react-icons-kit/icomoon/search'
 
 const Root = styled.div`
-    height: calc(100vh);
+    height: calc(100vh - 90px);
     width: 100vw;
     background-color: #191919;
     display: flex;
