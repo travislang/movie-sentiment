@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import AppLogo from './AppLogo';
+import SearchInput from '../SearchInput/SearchInput';
 
 const Div = styled.div`
     height: 55px;
@@ -13,10 +14,10 @@ const Div = styled.div`
     top: 0;
 `
 const AppLogoContainer = styled.div`
+    flex-grow: 1;
     height: 45px;
     display: flex;
     align-items: center;
-    flex-grow: 1;
 `
 
 const Title = styled.h1`
@@ -49,9 +50,7 @@ class Appbar extends Component {
                         Ai
                     </Title>
                 </AppLogoContainer>
-                <About>
-                    About
-                </About>
+                <SearchInput />
             </Div>
         );
     }

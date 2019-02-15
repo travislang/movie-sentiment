@@ -3,16 +3,17 @@ import styled from 'styled-components';
 import Icon from 'react-icons-kit';
 import { search } from 'react-icons-kit/icomoon/search'
 
+
 const Root = styled.div`
-    width: 50vw;
+    
     display: flex;
     align-items: center;
     justify-content: center;
 `
 
 const Searchbar = styled.input`
-    min-height: 50px;
-    flex-grow: 1;
+    min-height: 40px;
+    width: 30vw;
     background-color: #191919;
     position: relative;
     border-image: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); 
@@ -21,6 +22,7 @@ const Searchbar = styled.input`
     padding: 4px 12px;
     color: white;
     font-size: 1.75em;
+    font-weight: 200;
 `
 
 const Button = styled.button`
@@ -46,7 +48,7 @@ class SearchInput extends Component {
                 <Searchbar type='search' placeholder='Search for a movie...' />
                 <Button>
                     <Icon
-                        size={45}
+                        size={35}
                         className='searchIcon'
                         icon={search} 
                     />

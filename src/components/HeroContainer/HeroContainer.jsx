@@ -1,24 +1,34 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import SearchInput from '../SearchInput/SearchInput';
-import Icon from 'react-icons-kit';
-import { search } from 'react-icons-kit/icomoon/search'
+
 
 const Root = styled.div`
-    height: calc(100vh - 90px);
+    padding-top: 155px;
+    height: calc(100vh);
     width: 100vw;
     background-color: #191919;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    border-radius: 0px 0px 300px 0px;
+    justify-content: flex-start;
 `
+const Heading = styled.p`
+    font-size: 2.5em;
+    letter-spacing: 1px;
+    max-width: 50vw;
+    text-align: center;
+    color: #d2202f;
+    margin: 0;
+`
+
 
 class HeroContainer extends Component {
     render() {
         return (
             <Root>
-                <SearchInput />
+                <Heading>
+                    Popular Movies
+                </Heading>
             </Root>
         );
     }

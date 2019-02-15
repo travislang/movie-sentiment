@@ -6,7 +6,7 @@ import HeroContainer from './components/HeroContainer/HeroContainer';
 const Div = styled.div`
     min-height: 1000px;
     width: 100vw;
-    background-color: white;
+    background-color: #e0e0e0;
     position: relative;
 `
 
