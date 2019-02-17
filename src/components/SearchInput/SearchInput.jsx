@@ -14,11 +14,11 @@ const Root = styled.div`
 const Searchbar = styled.input`
     min-height: 40px;
     width: 30vw;
-    background-color: #191919;
+    background-color: #252525;
     border: 2px solid #d2202f;
     padding: 4px 52px 4px 24px;
     color: white;
-    font-size: 1.5em;
+    font-size: 1.25em;
     font-weight: 200;
     border-radius: 30px;
 `
