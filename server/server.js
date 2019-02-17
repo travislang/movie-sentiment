@@ -18,7 +18,7 @@ const server = new ApolloServer({
 });
 
 // passing in express as middleware
-server.applyMiddleware({ app });
+server.applyMiddleware({ app, cors: true });
 
 app.listen(PORT, () => {
     console.log(`Server ready at http://localhost:${PORT}${server.graphqlPath}`);
