@@ -18,9 +18,9 @@ const Root = styled.div`
 const Grid = styled.div`
     width: 100%;
     display: grid;
-    grid-gap: 50px;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    grid-auto-rows: 300px;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: 400px;
 `
 
 const Heading = styled.p`

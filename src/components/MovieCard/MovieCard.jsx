@@ -5,15 +5,20 @@ import { Query } from "react-apollo";
 import gql from "graphql-tag";
 
 const Div = styled.div`
-    border: 1px solid white;
+    display: flex;
+    flex-direction: column;
 `
 
 const Img = styled.img`
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: 90%;
+    object-fit: contain;
 `
-
+const Title = styled.h3`
+    margin: 0;
+    padding: 5px;
+    color: white;
+`
 
 export const MovieCard = () => (
     <Query
@@ -35,7 +40,10 @@ export const MovieCard = () => (
 
             return data.getPopularMovies.map(({ name, id, posterPath }) => (
                 <Div key={id}>
-                    <Img src={`http://image.tmdb.org/t/p/w500/${posterPath}`} />
+                    <Img src={`http://image.tmdb.org/t/p/w342/${posterPath}`} />
+                    <Title>
+                        {name}
+                    </Title>
                 </Div>
             ));
         }}
