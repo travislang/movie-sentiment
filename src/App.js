@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Appbar from './components/Appbar/Appbar';
-import HeroContainer from './components/HeroContainer/HeroContainer';
+import MoviesContainer from './components/MoviesContainer/MoviesContainer';
+
+
 
 const Div = styled.div`
     min-height: 1000px;
@@ -14,10 +16,10 @@ const Div = styled.div`
 class App extends Component {
   render() {
     return (
-      <Div>
-        <Appbar />
-        <HeroContainer />
-      </Div>
+        <Div>
+            <Appbar />
+            <MoviesContainer />
+        </Div>
     );
   }
 }
