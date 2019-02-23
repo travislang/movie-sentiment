@@ -15,6 +15,7 @@ module.exports = gql`
         genres: [Genre!]!
         overview: String!
         releaseDate: String!
+        tagline: String
     }
 
     type Query {

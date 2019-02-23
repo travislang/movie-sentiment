@@ -11,7 +11,6 @@ const Root = styled.div`
     background-color: #191919;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: flex-start;
 `
 
@@ -27,10 +26,12 @@ const Heading = styled.p`
     font-size: 2.5em;
     letter-spacing: 1px;
     max-width: 50vw;
-    text-align: center;
-    color: #d2202f;
+    border-left: 3px solid #d2202f;
+    color: white;
     margin: 0;
-    padding-bottom: 100px;
+    vertical-align: center;
+    padding: 15px;
+    margin-bottom: 25px;
 `
 
 
