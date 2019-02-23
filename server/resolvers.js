@@ -12,14 +12,31 @@ Genre.sync();
 //     releaseDate: String!
 // }
 const getMovieGenres = (parent, args, context, info) => {
-    return Genre.findAll({
-        raw: true,
-        where: {
-            id: parent.genre_ids
-        }
-    }).then(result => {
-        return result;
-    })
+    if(parent.genre_ids){
+        return Genre.findAll({
+            raw: true,
+            where: {
+                id: parent.genre_ids
+            }
+        }).then(result => {
+            return result;
+        })
+    }
+    else {
+        let genreArr = [];
+        parent.genres.map(genre => {
+            genreArr.push(genre.id)
+        })
+        return Genre.findAll({
+            raw: true,
+            where: {
+                id: genreArr
+            }
+        }).then(result => {
+            return result;
+        })
+    }
+    
 }
 
 module.exports = {
@@ -53,7 +70,7 @@ module.exports = {
         releaseDate: (parent, args, context, info) => {
             return parent.release_date;
         },
-        releaseDate: (parent, args, context, info) => {
+        tagline: (parent, args, context, info) => {
             return parent.tagline;
         },
     },

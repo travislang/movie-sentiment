@@ -54,18 +54,34 @@ const DetailsDiv = styled.div`
 const DetailsContainer = styled.div`
     margin: 0 auto;
     display: flex;
+    flex-direction: column;
     width: 100vw;
     max-width: 980px;
     
-    /* border: 1px solid blue; */
-    
 `
-
 const DetailsHeader = styled.div`
     display: flex;
     width: 100vw;
     max-width: 980px;
     justify-content: space-between;
+    margin-bottom: 25px;
+`
+const DetailsBody = styled.div`
+    display: flex;
+    width: 100vw;
+    max-width: 980px;
+`
+const Summary = styled.div`
+    display: flex;
+    flex: 60% 1 1;
+    padding: 1em;
+    border: 1px solid white;
+`
+const Genres = styled.div`
+    display: flex;
+    flex: 40% 1 1;
+    padding: 1em;
+    border: 1px solid white;
 `
 
 const MovieDetails = (props) => {
@@ -80,13 +96,18 @@ const MovieDetails = (props) => {
                 name
                 tagline
                 backdropPath
+                overview
+                genres {
+                    name
+                }
             }
         }
     `}
         >
             {({ loading, error, data }) => {
                 const movie = data.movieDetails;
-
+                console.log('p', movie);
+                
                 if (loading) return <p>Loading...</p>;
                 if (error) return <p>Error :(</p>;
 
@@ -111,7 +132,19 @@ const MovieDetails = (props) => {
                                         </Title>
                                     </div>
                                 </DetailsHeader>
-                                
+                                <DetailsBody>
+                                    <Summary>
+                                        <p style={{color: 'white'}}>
+                                            {movie.overview}
+                                        </p>
+                                    </Summary>
+                                    <Genres>
+                                        <h5 style={{color: 'white'}}>Genres:</h5>
+                                        <ul>
+                                            <li></li>
+                                        </ul>
+                                    </Genres>
+                                </DetailsBody>
                             </DetailsContainer>
                         </DetailsDiv>
                     </Div>
