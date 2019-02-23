@@ -10,8 +10,18 @@ const Div = styled.div`
     padding: 8px 32px;
     display: flex;
     align-items: center;
+    justify-content: center;
     position: absolute;
     top: 0;
+`
+
+const AppbarContainer = styled.div`
+    height: 55px;
+    width: calc(100vw - 64px);
+    max-width: 1280px;
+    background-color: #191919;
+    display: flex;
+    align-items: center;
 `
 const AppLogoContainer = styled.div`
     flex-grow: 1;
@@ -43,14 +53,16 @@ class Appbar extends Component {
     render() {
         return (
             <Div>
-                <AppLogoContainer>
-                    {AppLogo}
-                    <Title>
-                        <TitleSpan as="span">Intelli</TitleSpan>
-                        Flix
+                <AppbarContainer>
+                    <AppLogoContainer>
+                        {AppLogo}
+                        <Title>
+                            <TitleSpan as="span">Intelli</TitleSpan>
+                            Flix
                     </Title>
-                </AppLogoContainer>
-                <SearchInput />
+                    </AppLogoContainer>
+                    <SearchInput />
+                </AppbarContainer>
             </Div>
         );
     }
