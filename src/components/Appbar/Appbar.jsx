@@ -46,8 +46,8 @@ class Appbar extends Component {
                 <AppLogoContainer>
                     {AppLogo}
                     <Title>
-                        <TitleSpan as="span">Movie</TitleSpan>
-                        Ai
+                        <TitleSpan as="span">Intelli</TitleSpan>
+                        Flix
                     </Title>
                 </AppLogoContainer>
                 <SearchInput />

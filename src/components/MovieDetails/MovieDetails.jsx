@@ -7,8 +7,11 @@ import gql from "graphql-tag";
 
 const Div = styled.div`
     width: 100vw;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    background-color: #191919;
 `
 
 const ImgDiv = styled.div`
@@ -32,22 +35,37 @@ const ImgDiv = styled.div`
         filter: grayscale(50%);
     }
 `
-const Img = styled.img`
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-`
 const Title = styled.h1`
     margin: 0;
     padding: 5px;
-    font-family: 'Roboto';
-    font-size: 7em;
+    color: white;
+`
+const Tagline = styled.h3`
+    margin: 0;
+    padding: 5px;
+    color: #bdbdbd;
+`
+const DetailsDiv = styled.div`
+    min-width: 100vw;
+    padding-top: 25px;
+    padding-bottom: 100px;
+`
+
+const DetailsContainer = styled.div`
+    margin: 0 auto;
+    display: flex;
+    width: 100vw;
+    max-width: 980px;
     
-    font-weight: bold;
-    color: #d2202f;
-    z-index: 100;
-    text-align: center;
-    opacity: 0.75;
+    /* border: 1px solid blue; */
+    
+`
+
+const DetailsHeader = styled.div`
+    display: flex;
+    width: 100vw;
+    max-width: 980px;
+    justify-content: space-between;
 `
 
 const MovieDetails = (props) => {
@@ -60,6 +78,7 @@ const MovieDetails = (props) => {
             movieDetails (movieId: ${movieId}){
                 id
                 name
+                tagline
                 backdropPath
             }
         }
@@ -74,8 +93,26 @@ const MovieDetails = (props) => {
                 return (
                     <Div>
                         <ImgDiv style={{ background: `center/cover url(http://image.tmdb.org/t/p/w1280/${movie.backdropPath})`}}>
-                            <Title>{movie.name}</Title>
+                            
                         </ImgDiv>
+                        <DetailsDiv>
+                            <DetailsContainer>
+                                <DetailsHeader>
+                                    <div style={{ borderLeft: '3px solid #d2202f', paddingLeft: 10}}>
+                                        <Title>{movie.name}</Title>
+                                        <Tagline>{movie.tagline}</Tagline>
+                                    </div>
+                                    <div>
+                                        <Title>
+                                            IntelliRating: 
+                                            <span style={{fontWeight: 300, paddingLeft: 10}}>
+                                                8.9/10
+                                            </span>
+                                        </Title>
+                                    </div>
+                                </DetailsHeader>
+                            </DetailsContainer>
+                        </DetailsDiv>
                     </Div>
                 )
             }}

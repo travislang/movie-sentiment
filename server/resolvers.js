@@ -53,6 +53,9 @@ module.exports = {
         releaseDate: (parent, args, context, info) => {
             return parent.release_date;
         },
+        releaseDate: (parent, args, context, info) => {
+            return parent.tagline;
+        },
     },
 
     Query: {
