@@ -73,15 +73,22 @@ const DetailsBody = styled.div`
 `
 const Summary = styled.div`
     display: flex;
+    flex-direction: column;
     flex: 60% 1 1;
     padding: 1em;
-    border: 1px solid white;
 `
 const Genres = styled.div`
     display: flex;
+    flex-direction: column;
+    align-content: center;
     flex: 40% 1 1;
     padding: 1em;
-    border: 1px solid white;
+`
+const Li = styled.li`
+    list-style: none;
+    color: white;
+    text-align: end;
+    padding: 5px;
 `
 
 const MovieDetails = (props) => {
@@ -134,14 +141,21 @@ const MovieDetails = (props) => {
                                 </DetailsHeader>
                                 <DetailsBody>
                                     <Summary>
-                                        <p style={{color: 'white'}}>
+                                        <h2 style={{ color: '#d2202f', margin: 0 }}>Summary</h2>
+                                        <p style={{color: 'white', lineHeight: '1.3em'}}>
                                             {movie.overview}
                                         </p>
                                     </Summary>
                                     <Genres>
-                                        <h5 style={{color: 'white'}}>Genres:</h5>
+                                        <h2 style={{ color: '#d2202f', textAlign: 'end', margin: 0}}>Genres:</h2>
                                         <ul>
-                                            <li></li>
+                                            {movie.genres.map((genre, i) => {
+                                                return (
+                                                    <Li key={i}>
+                                                        {genre.name}
+                                                    </Li>
+                                                )
+                                            })}
                                         </ul>
                                     </Genres>
                                 </DetailsBody>
