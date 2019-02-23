@@ -11,6 +11,7 @@ module.exports = gql`
         name: String!
         id: Int!
         posterPath: String!
+        backdropPath: String!
         genres: [Genre!]!
         overview: String!
         releaseDate: String!

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink, Link, withRouter} from 'react-router-dom';
 import styled from 'styled-components';
 
 import { Query } from "react-apollo";
@@ -13,6 +14,7 @@ const Img = styled.img`
     width: 100%;
     height: 90%;
     object-fit: contain;
+    cursor: pointer;
 `
 const Title = styled.h3`
     margin: 0;
@@ -20,7 +22,11 @@ const Title = styled.h3`
     color: white;
 `
 
-export const MovieCard = () => (
+const handleClick = (props, id) => {
+    props.history.push(`/details/${id}`)
+}
+
+const MovieCard = (props) => (
     <Query
         query={gql`
       {
@@ -33,14 +39,12 @@ export const MovieCard = () => (
     `}
     >
         {({ loading, error, data }) => {
-            console.log('data', data);
-            
             if (loading) return <p>Loading...</p>;
             if (error) return <p>Error :(</p>;
 
             return data.getPopularMovies.map(({ name, id, posterPath }) => (
                 <Div key={id}>
-                    <Img src={`http://image.tmdb.org/t/p/w342/${posterPath}`} />
+                    <Img onClick={() => handleClick(props, id)} src={`http://image.tmdb.org/t/p/w342/${posterPath}`} />
                     <Title>
                         {name}
                     </Title>
@@ -49,3 +53,5 @@ export const MovieCard = () => (
         }}
     </Query>
 );
+
+export default withRouter(MovieCard);

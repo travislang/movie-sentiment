@@ -3,6 +3,13 @@ import styled from 'styled-components';
 import Appbar from './components/Appbar/Appbar';
 import MoviesContainer from './components/MoviesContainer/MoviesContainer';
 
+import {
+    HashRouter,
+    Route,
+    Redirect,
+    Switch,
+} from 'react-router-dom';
+
 
 
 const Div = styled.div`
@@ -16,10 +23,23 @@ const Div = styled.div`
 class App extends Component {
   render() {
     return (
-        <Div>
-            <Appbar />
-            <MoviesContainer />
-        </Div>
+        <HashRouter>
+            <React.Fragment>
+                <Appbar />
+                <Switch>
+                    <Route
+                        exact
+                        path="/"
+                        component={MoviesContainer}
+                    />
+                    <Route
+                        exact
+                        path="/details/:id"
+                        component={MoviesContainer}
+                    />
+                </Switch>
+            </React.Fragment>
+        </HashRouter>
     );
   }
 }

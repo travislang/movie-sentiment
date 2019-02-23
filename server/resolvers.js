@@ -41,6 +41,9 @@ module.exports = {
         posterPath: (parent, args, context, info) => {
             return parent.poster_path;
         },
+        backdropPath: (parent, args, context, info) => {
+            return parent.backdrop_path;
+        },
         genres: (parent, args, context, info) => {
             return getMovieGenres(parent)
         },

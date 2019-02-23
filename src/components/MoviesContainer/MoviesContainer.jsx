@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import {MovieCard} from '../MovieCard/MovieCard';
+import MovieCardGql from '../MovieCard/MovieCard';
 
 const Root = styled.div`
     box-sizing: border-box;
@@ -35,6 +35,8 @@ const Heading = styled.p`
 
 
 class HeroContainer extends Component {
+
+
     render() {
         return (
             <Root>
@@ -42,7 +44,7 @@ class HeroContainer extends Component {
                     Popular Movies
                 </Heading>
                 <Grid>
-                    <MovieCard />
+                    <MovieCardGql />
                 </Grid>
             </Root>
         );
