@@ -12,6 +12,8 @@ const Root = styled.div`
 
 const Grid = styled.div`
     width: 100%;
+    max-height: 420px;
+    overflow-y: scroll;
     display: grid;
     grid-gap: 10px;
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));

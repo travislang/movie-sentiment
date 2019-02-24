@@ -72,6 +72,7 @@ const DetailsBody = styled.div`
     display: flex;
     width: 100vw;
     max-width: 980px;
+    margin-bottom: 25px;
 `
 const Summary = styled.div`
     display: flex;
