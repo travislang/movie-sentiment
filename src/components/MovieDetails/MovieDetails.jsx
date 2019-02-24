@@ -51,7 +51,6 @@ const Tagline = styled.h3`
 `
 const DetailsDiv = styled.div`
     width: 90vw;
-    max-width: 1080px;
     padding-top: 25px;
     padding-bottom: 100px;
     display: flex;
@@ -63,20 +62,18 @@ const DetailsContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: 90vw;
+    max-width: 1280px;
     
     
 `
 const DetailsHeader = styled.div`
     display: flex;
-    width: 90vw;
-    max-width: 1080px;
+    width: 100%;
     justify-content: space-between;
     margin-bottom: 25px;
 `
 const DetailsBody = styled.div`
     display: flex;
-    width: 90vw;
-    max-width: 1080px;
     margin-bottom: 25px;
 `
 const Summary = styled.div`
