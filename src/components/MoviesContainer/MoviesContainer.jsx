@@ -7,6 +7,8 @@ import { ic_arrow_drop_down } from 'react-icons-kit/md/ic_arrow_drop_down'
 import { ic_arrow_drop_up } from 'react-icons-kit/md/ic_arrow_drop_up'
 import onClickOutside from "react-onclickoutside";
 
+import FilterList from './FilterList';
+
 const Root = styled.div`
     box-sizing: border-box;
     padding: 0 50px;
@@ -48,7 +50,7 @@ const Filter = styled.p`
     font-size: 2em;
     letter-spacing: 1px;
     max-width: 50vw;
-    color: white;
+    color: ${props => props.color};
     margin: 0;
     vertical-align: center;
     padding: 15px;
@@ -56,7 +58,7 @@ const Filter = styled.p`
 `
 const FilterDropdown = styled.div`
     border-radius: 4px;
-    height: 200px;
+    min-height: 200px;
     position: absolute;
     background-color: #2f2f2f;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
@@ -93,7 +95,7 @@ class HeroContainer extends Component {
                         Popular Movies
                     </Heading>
                     <div style={{position: 'relative'}}>
-                        <Filter onClick={this.handleClick}>
+                        <Filter color={!filterOpen ? 'white' : '#b2b2b2'} onClick={this.handleClick}>
                             Filter
                         <span style={{ color: 'grey' }}>
                                 <Icon size={42} icon={filterOpen ? ic_arrow_drop_up : ic_arrow_drop_down} />
@@ -101,7 +103,7 @@ class HeroContainer extends Component {
                         </Filter>
                         {filterOpen ?
                             <FilterDropdown>
-                                hi
+                                <FilterList />
                             </FilterDropdown>
                             :
                             null

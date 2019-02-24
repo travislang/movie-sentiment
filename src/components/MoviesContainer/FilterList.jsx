@@ -8,13 +8,18 @@ import gql from "graphql-tag";
 const Div = styled.div`
 
 `
-
+const Li =  styled.li`
+    list-style: none;
+    color: white;
+    padding: 5px 0;
+    cursor: pointer;
+`
 
 const handleClick = (props, id) => {
     props.history.push(`/details/${id}`)
 }
 
-const RecommendedMovieCard = (props) => (
+const FilterList = (props) => (
     <Query
         query={gql`
       {
@@ -29,16 +34,17 @@ const RecommendedMovieCard = (props) => (
             if (loading) return <p>Loading...</p>;
             if (error) return <p>Error :(</p>;
 
-            return data.getGenres.map(({ name, id }) => (
-                <Div key={id}>
-                    <Img onClick={() => handleClick(props, id)} src={`http://image.tmdb.org/t/p/w342/${posterPath}`} />
-                    <Title>
-                        {name}
-                    </Title>
-                </Div>
-            ));
+            return (
+                <ul style={{margin: 0, padding: '0 15px'}}>
+                    {data.getGenres.map(({ name, id }) => (
+                        <Li key={id} onClick={() => handleClick(props, id)}>
+                            {name}
+                        </Li>
+                    ))}
+                </ul>
+            )
         }}
     </Query>
 );
 
-export default withRouter(RecommendedMovieCard);
+export default withRouter(FilterList);
