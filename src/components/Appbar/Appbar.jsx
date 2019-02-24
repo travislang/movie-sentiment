@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { NavLink, Link, withRouter } from 'react-router-dom';
+
 import AppLogo from './AppLogo';
-import AppLogo2 from './AppLogo2';
 import SearchInput from '../SearchInput/SearchInput';
 
 const Div = styled.div`
@@ -30,6 +31,11 @@ const AppLogoContainer = styled.div`
     display: flex;
     align-items: center;
 `
+const StyledNavLink = styled(NavLink)`
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+`
 
 const Title = styled.h1`
     color: white;
@@ -55,11 +61,13 @@ class Appbar extends Component {
             <Div>
                 <AppbarContainer>
                     <AppLogoContainer>
-                        {AppLogo2}
-                        <Title>
-                            <TitleSpan as="span">Intelli</TitleSpan>
-                            Flix
-                        </Title>
+                        <StyledNavLink to='/'>
+                            {AppLogo}
+                            <Title>
+                                <TitleSpan as="span">Intelli</TitleSpan>
+                                Flix
+                            </Title>
+                        </StyledNavLink>
                     </AppLogoContainer>
                     <SearchInput />
                 </AppbarContainer>

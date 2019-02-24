@@ -7,7 +7,8 @@ import { ic_arrow_drop_down } from 'react-icons-kit/md/ic_arrow_drop_down'
 import { ic_arrow_drop_up } from 'react-icons-kit/md/ic_arrow_drop_up'
 import onClickOutside from "react-onclickoutside";
 
-import FilterList from './FilterList';
+import FilterList from '../MoviesContainer/FilterList';
+import GenreName from './GenreName';
 
 const Root = styled.div`
     box-sizing: border-box;
@@ -34,18 +35,6 @@ const Div = styled.div`
     justify-content: space-between;
 `
 
-const Heading = styled.p`
-    font-size: 2.5em;
-    letter-spacing: 1px;
-    max-width: 50vw;
-    border-left: 3px solid #d2202f;
-    color: white;
-    margin: 0;
-    vertical-align: center;
-    padding: 15px;
-    margin-bottom: 25px;
-`
-
 const Filter = styled.p`
     font-size: 2em;
     letter-spacing: 1px;
@@ -70,7 +59,7 @@ const FilterDropdown = styled.div`
 
 class HeroContainer extends Component {
 
-    state={
+    state = {
         filterOpen: false
     }
 
@@ -87,17 +76,17 @@ class HeroContainer extends Component {
     };
 
     render() {
-        const {filterOpen} = this.state;
+        const { filterOpen } = this.state;
+        const genreId = this.props.match.params.id;
+        
         return (
             <Root>
                 <Div>
-                    <Heading>
-                        Popular Movies
-                    </Heading>
-                    <div style={{position: 'relative'}}>
+                    <GenreName genreId={genreId} />
+                    <div style={{ position: 'relative' }}>
                         <Filter color={!filterOpen ? 'white' : '#b2b2b2'} onClick={this.handleClick}>
                             Filter
-                            <span style={{ color: 'grey' }}>
+                        <span style={{ color: 'grey' }}>
                                 <Icon size={42} icon={filterOpen ? ic_arrow_drop_up : ic_arrow_drop_down} />
                             </span>
                         </Filter>
@@ -111,7 +100,6 @@ class HeroContainer extends Component {
                     </div>
                 </Div>
                 <Grid>
-                    <MovieCardGql />
                 </Grid>
             </Root>
         );

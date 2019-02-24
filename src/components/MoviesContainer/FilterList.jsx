@@ -16,7 +16,7 @@ const Li =  styled.li`
 `
 
 const handleClick = (props, id) => {
-    props.history.push(`/details/${id}`)
+    props.history.push(`/genre/${id}`)
 }
 
 const FilterList = (props) => (

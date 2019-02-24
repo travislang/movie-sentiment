@@ -25,7 +25,7 @@ module.exports = gql`
     }
 
     type Query {
-        genre(movieId: Int!): Genre!
+        genre(id: Int!): Genre!
         getGenres: [Genre!]!
         getPopularMovies(page: Int = 1): [Movie!]!
         getRecommendedMovies(page: Int = 1, movieId: Int!): [Movie!]!
