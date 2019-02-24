@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 
+import RecommendedMovies from '../RecommendedMovies/RecommendedMovies';
+
 const Div = styled.div`
     width: 100vw;
     min-height: 100vh;
@@ -159,6 +161,7 @@ const MovieDetails = (props) => {
                                         </ul>
                                     </Genres>
                                 </DetailsBody>
+                                <RecommendedMovies movieId={movieId} />
                             </DetailsContainer>
                         </DetailsDiv>
                     </Div>
