@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Appbar from './components/Appbar/Appbar';
 import MoviesContainer from './components/MoviesContainer/MoviesContainer';
 import MovieDetails from './components/MovieDetails/MovieDetails';
+import GenreContainer from './components/GenreContainer/GenreContainer';
 
 import {
     HashRouter,
@@ -37,6 +38,11 @@ class App extends Component {
                         exact
                         path="/details/:id"
                         component={MovieDetails}
+                    />
+                    <Route
+                        exact
+                        path="/genre/:id"
+                        component={GenreContainer}
                     />
                 </Switch>
             </React.Fragment>
