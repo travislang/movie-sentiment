@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import MovieCardGql from '../MovieCard/MovieCard';
+import GenreMovieCard from '../MovieCard/GenreMovieCard';
 
 import Icon from 'react-icons-kit';
 import { ic_arrow_drop_down } from 'react-icons-kit/md/ic_arrow_drop_down'
@@ -69,6 +69,12 @@ class HeroContainer extends Component {
         })
     }
 
+    closeDropdown = () => {
+        this.setState({
+            filterOpen: false
+        })
+    }
+
     handleClickOutside = evt => {
         this.setState({
             filterOpen: false
@@ -78,7 +84,7 @@ class HeroContainer extends Component {
     render() {
         const { filterOpen } = this.state;
         const genreId = this.props.match.params.id;
-        
+
         return (
             <Root>
                 <Div>
@@ -92,7 +98,7 @@ class HeroContainer extends Component {
                         </Filter>
                         {filterOpen ?
                             <FilterDropdown>
-                                <FilterList />
+                                <FilterList closeDropdown={this.closeDropdown} />
                             </FilterDropdown>
                             :
                             null
@@ -100,6 +106,7 @@ class HeroContainer extends Component {
                     </div>
                 </Div>
                 <Grid>
+                    <GenreMovieCard genreId={genreId} />
                 </Grid>
             </Root>
         );

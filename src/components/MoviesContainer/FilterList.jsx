@@ -17,6 +17,7 @@ const Li =  styled.li`
 
 const handleClick = (props, id) => {
     props.history.push(`/genre/${id}`)
+    props.closeDropdown();
 }
 
 const FilterList = (props) => (

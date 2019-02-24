@@ -29,6 +29,7 @@ module.exports = gql`
         getGenres: [Genre!]!
         getPopularMovies(page: Int = 1): [Movie!]!
         getRecommendedMovies(page: Int = 1, movieId: Int!): [Movie!]!
+        discoverMovies(genre: Int!, page: Int = 1): [Movie!]!
         getSimilarMovies(page: Int = 1, movieId: Int!): [Movie!]!
         getCast(movieId: Int!): [Person!]!
         movieDetails(movieId: Int!): Movie!

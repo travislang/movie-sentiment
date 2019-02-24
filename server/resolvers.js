@@ -118,6 +118,12 @@ module.exports = {
                     return response.data.results
                 })
         },
+        discoverMovies: (parent, args, context, info) => {
+            return axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDBAPI}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${args.page}&with_genres=${args.genre}`)
+                .then(response => {
+                    return response.data.results
+                })
+        },
         getSimilarMovies: (parent, args, context, info) => {
             return axios.get(`https://api.themoviedb.org/3/movie/${args.movieId}/similar?api_key=${process.env.TMDBAPI}&language=en-US&page=${args.page}`)
                 .then(response => {

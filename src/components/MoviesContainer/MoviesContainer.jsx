@@ -80,6 +80,12 @@ class HeroContainer extends Component {
         })
     }
 
+    closeDropdown = () => {
+        this.setState({
+            filterOpen: false
+        })
+    }
+
     handleClickOutside = evt => {
         this.setState({
             filterOpen: false
@@ -103,7 +109,7 @@ class HeroContainer extends Component {
                         </Filter>
                         {filterOpen ?
                             <FilterDropdown>
-                                <FilterList />
+                                <FilterList closeDropdown={this.closeDropdown} />
                             </FilterDropdown>
                             :
                             null
