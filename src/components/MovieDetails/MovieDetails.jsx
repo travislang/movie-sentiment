@@ -59,20 +59,20 @@ const DetailsContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: 100vw;
-    max-width: 980px;
+    max-width: 1080px;
     
 `
 const DetailsHeader = styled.div`
     display: flex;
     width: 100vw;
-    max-width: 980px;
+    max-width: 1080px;
     justify-content: space-between;
     margin-bottom: 25px;
 `
 const DetailsBody = styled.div`
     display: flex;
     width: 100vw;
-    max-width: 980px;
+    max-width: 1080px;
     margin-bottom: 25px;
 `
 const Summary = styled.div`

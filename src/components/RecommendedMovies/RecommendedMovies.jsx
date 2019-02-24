@@ -4,7 +4,7 @@ import RecommendedMovieCard from './RecommendedMovieCard';
 
 const Root = styled.div`
     box-sizing: border-box;
-    width: 40vw;
+    width: 40%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
