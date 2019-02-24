@@ -7,6 +7,7 @@ import gql from "graphql-tag";
 
 import RecommendedMovies from '../RecommendedMovies/RecommendedMovies';
 import SimilarMovies from '../SimilarMovies/SimilarMovies';
+import CastContainer from '../CastContainer/CastContainer';
 
 const Div = styled.div`
     width: 100vw;
@@ -49,29 +50,32 @@ const Tagline = styled.h3`
     color: #bdbdbd;
 `
 const DetailsDiv = styled.div`
-    min-width: 100vw;
+    width: 90vw;
+    max-width: 1080px;
     padding-top: 25px;
     padding-bottom: 100px;
+    display: flex;
+    justify-content: center;
 `
 
 const DetailsContainer = styled.div`
-    margin: 0 auto;
+    padding: 0 50px;
     display: flex;
     flex-direction: column;
-    width: 100vw;
-    max-width: 1080px;
+    width: 90vw;
+    
     
 `
 const DetailsHeader = styled.div`
     display: flex;
-    width: 100vw;
+    width: 90vw;
     max-width: 1080px;
     justify-content: space-between;
     margin-bottom: 25px;
 `
 const DetailsBody = styled.div`
     display: flex;
-    width: 100vw;
+    width: 90vw;
     max-width: 1080px;
     margin-bottom: 25px;
 `
@@ -128,9 +132,7 @@ const MovieDetails = (props) => {
 
                 return (
                     <Div>
-                        <ImgDiv style={{ background: `center/cover url(http://image.tmdb.org/t/p/w1280/${movie.backdropPath})`}}>
-                            
-                        </ImgDiv>
+                        <ImgDiv style={{ background: `center/cover url(http://image.tmdb.org/t/p/w1280/${movie.backdropPath})`}} />
                         <DetailsDiv>
                             <DetailsContainer>
                                 <DetailsHeader>
@@ -167,6 +169,7 @@ const MovieDetails = (props) => {
                                         </ul>
                                     </Genres>
                                 </DetailsBody>
+                                <CastContainer movieId={movieId} />
                                 <MoreMovies>
                                     <RecommendedMovies movieId={movieId} />
                                     <SimilarMovies movieId={movieId} />

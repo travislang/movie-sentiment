@@ -7,6 +7,12 @@ module.exports = gql`
         name: String!
     }
 
+    type Person {
+        id: Int!
+        name: String!
+        profilePath: String
+    }
+
     type Movie {
         name: String!
         id: Int!
@@ -24,6 +30,7 @@ module.exports = gql`
         getPopularMovies(page: Int = 1): [Movie!]!
         getRecommendedMovies(page: Int = 1, movieId: Int!): [Movie!]!
         getSimilarMovies(page: Int = 1, movieId: Int!): [Movie!]!
+        getCast(movieId: Int!): [Person!]!
         movieDetails(movieId: Int!): Movie!
         searchMovie(title: String!): [Movie]!
     }

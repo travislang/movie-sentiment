@@ -12,7 +12,7 @@ Genre.sync();
 //     releaseDate: String!
 // }
 const getMovieGenres = (parent, args, context, info) => {
-    if(parent.genre_ids){
+    if (parent.genre_ids) {
         return Genre.findAll({
             raw: true,
             where: {
@@ -36,16 +36,28 @@ const getMovieGenres = (parent, args, context, info) => {
             return result;
         })
     }
-    
+
 }
 
 module.exports = {
     Genre: {
         id: (parent, args, context, info) => {
-        return parent.id;
+            return parent.id;
         },
         name: (parent, args, context, info) => {
-        return parent.genre_name;
+            return parent.genre_name;
+        },
+    },
+    Person: {
+        id: (parent, args, context, info) => {
+            console.log('p', parent);
+            return parent.cast_id;
+        },
+        name: (parent, args, context, info) => {
+            return parent.name;
+        },
+        profilePath: (parent, args, context, info) => {
+            return parent.profile_path;
         },
     },
     Movie: {
@@ -78,15 +90,21 @@ module.exports = {
     Query: {
         genre: (parent, args, context, info) => {
             return Genre.findById(args.id)
-            .then(result => {
-                return result.dataValues;
-            })
+                .then(result => {
+                    return result.dataValues;
+                })
         },
         getGenres: (parent, args, context, info) => {
-            return Genre.findAll({raw: true})
-            .then(result => {
-                return result;
-            })
+            return Genre.findAll({ raw: true })
+                .then(result => {
+                    return result;
+                })
+        },
+        getCast: (parent, args, context, info) => {
+            return axios.get(`https://api.themoviedb.org/3/movie/${args.movieId}/credits?api_key=${process.env.TMDBAPI}`)
+                .then(response => {
+                    return response.data.cast
+                })
         },
         getPopularMovies: (parent, args, context, info) => {
             return axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.TMDBAPI}&language=en-US&page=${args.page}`)
