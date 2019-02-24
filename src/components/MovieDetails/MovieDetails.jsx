@@ -7,6 +7,7 @@ import gql from "graphql-tag";
 
 import RecommendedMovies from '../RecommendedMovies/RecommendedMovies';
 import SimilarMovies from '../SimilarMovies/SimilarMovies';
+import CastContainer from '../CastContainer/CastContainer';
 
 const Div = styled.div`
     width: 100vw;
@@ -128,9 +129,7 @@ const MovieDetails = (props) => {
 
                 return (
                     <Div>
-                        <ImgDiv style={{ background: `center/cover url(http://image.tmdb.org/t/p/w1280/${movie.backdropPath})`}}>
-                            
-                        </ImgDiv>
+                        <ImgDiv style={{ background: `center/cover url(http://image.tmdb.org/t/p/w1280/${movie.backdropPath})`}} />
                         <DetailsDiv>
                             <DetailsContainer>
                                 <DetailsHeader>
@@ -167,6 +166,7 @@ const MovieDetails = (props) => {
                                         </ul>
                                     </Genres>
                                 </DetailsBody>
+                                <CastContainer movieId={movieId} />
                                 <MoreMovies>
                                     <RecommendedMovies movieId={movieId} />
                                     <SimilarMovies movieId={movieId} />
