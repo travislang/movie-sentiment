@@ -94,6 +94,12 @@ module.exports = {
                     return response.data.results
                 })
         },
+        getRecommendedMovies: (parent, args, context, info) => {
+            return axios.get(`https://api.themoviedb.org/3/movie/${args.movieId}/recommendations?api_key=${process.env.TMDBAPI}&language=en-US&page=${args.page}`)
+                .then(response => {
+                    return response.data.results
+                })
+        },
         movieDetails: (parent, args, context, info) => {
             return axios.get(`https://api.themoviedb.org/3/movie/${args.movieId}?api_key=${process.env.TMDBAPI}&language=en-US`)
                 .then(response => {
