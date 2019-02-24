@@ -143,7 +143,7 @@ const MovieDetails = (props) => {
                                     <div>
                                         <Title>
                                             IntelliRating: 
-                                            <span style={{fontWeight: 300, paddingLeft: 10}}>
+                                            <span style={{ fontWeight: 300, paddingLeft: 10, color: '#20D24A'}}>
                                                 8.9/10
                                             </span>
                                         </Title>
