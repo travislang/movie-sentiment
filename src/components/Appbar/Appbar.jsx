@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import AppLogo from './AppLogo';
+import AppLogo2 from './AppLogo2';
 import SearchInput from '../SearchInput/SearchInput';
 
 const Div = styled.div`
@@ -33,7 +34,6 @@ const AppLogoContainer = styled.div`
 const Title = styled.h1`
     color: white;
     margin: 0;
-    padding-left: 8px;
     letter-spacing: 3px;
 `
 const TitleSpan = styled(Title)`
@@ -55,11 +55,11 @@ class Appbar extends Component {
             <Div>
                 <AppbarContainer>
                     <AppLogoContainer>
-                        {AppLogo}
+                        {AppLogo2}
                         <Title>
                             <TitleSpan as="span">Intelli</TitleSpan>
                             Flix
-                    </Title>
+                        </Title>
                     </AppLogoContainer>
                     <SearchInput />
                 </AppbarContainer>

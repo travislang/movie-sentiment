@@ -50,29 +50,32 @@ const Tagline = styled.h3`
     color: #bdbdbd;
 `
 const DetailsDiv = styled.div`
-    min-width: 100vw;
+    width: 90vw;
+    max-width: 1080px;
     padding-top: 25px;
     padding-bottom: 100px;
+    display: flex;
+    justify-content: center;
 `
 
 const DetailsContainer = styled.div`
-    margin: 0 auto;
+    padding: 0 50px;
     display: flex;
     flex-direction: column;
-    width: 100vw;
-    max-width: 1080px;
+    width: 90vw;
+    
     
 `
 const DetailsHeader = styled.div`
     display: flex;
-    width: 100vw;
+    width: 90vw;
     max-width: 1080px;
     justify-content: space-between;
     margin-bottom: 25px;
 `
 const DetailsBody = styled.div`
     display: flex;
-    width: 100vw;
+    width: 90vw;
     max-width: 1080px;
     margin-bottom: 25px;
 `

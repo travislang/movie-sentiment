@@ -16,7 +16,7 @@ const Grid = styled.div`
     overflow-x: scroll;
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: repeat(40, minmax(100px, 1fr));
+    grid-template-columns: repeat(400, minmax(100px, 1fr));
     align-items: start;
 `
 
