@@ -6,6 +6,7 @@ import { Query } from "react-apollo";
 import gql from "graphql-tag";
 
 import RecommendedMovies from '../RecommendedMovies/RecommendedMovies';
+import SimilarMovies from '../SimilarMovies/SimilarMovies';
 
 const Div = styled.div`
     width: 100vw;
@@ -93,6 +94,10 @@ const Li = styled.li`
     text-align: end;
     padding: 5px;
 `
+const MoreMovies = styled.div`
+    display: flex;
+    justify-content: space-between;
+`
 
 const MovieDetails = (props) => {
     const movieId = Number(props.match.params.id);
@@ -162,7 +167,10 @@ const MovieDetails = (props) => {
                                         </ul>
                                     </Genres>
                                 </DetailsBody>
-                                <RecommendedMovies movieId={movieId} />
+                                <MoreMovies>
+                                    <RecommendedMovies movieId={movieId} />
+                                    <SimilarMovies movieId={movieId} />
+                                </MoreMovies>
                             </DetailsContainer>
                         </DetailsDiv>
                     </Div>
