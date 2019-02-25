@@ -122,7 +122,6 @@ const MovieDetails = (props) => {
         >
             {({ loading, error, data }) => {
                 const movie = data.movieDetails;
-                console.log('p', movie);
                 
                 if (loading) return <p>Loading...</p>;
                 if (error) return <p>Error :(</p>;

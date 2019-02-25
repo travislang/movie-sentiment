@@ -24,11 +24,6 @@ const Title = styled.h3`
     color: white;
 `
 
-const handleClick = (props, id) => {
-    props.history.push(`/details/${id}`)
-}
-
-
 const QUERY = gql`
         query getPopularMovies($page: Int) {
             getPopularMovies(page: $page) {
@@ -68,13 +63,17 @@ class MovieFeed extends Component {
         }
     };
 
+    handleClick = (id) => {
+        this.props.history.push(`/details/${id}`)
+    }
+
     render() {
         const { movies = [], onLoadMore, ...props } = this.props;
         return (
             <>
                 {movies.map(({ name, id, posterPath }) => (
                     <Div key={id}>
-                        <Img onClick={() => handleClick(props, id)} src={`http://image.tmdb.org/t/p/w342/${posterPath}`} />
+                        <Img onClick={() => this.handleClick(id)} src={`http://image.tmdb.org/t/p/w342/${posterPath}`} />
                         <Title>
                             {name}
                         </Title>
@@ -85,11 +84,11 @@ class MovieFeed extends Component {
     }
 }
 
+const MovieFeedWithRouter = withRouter(MovieFeed);
 
 const MovieCard = (props) => (
     <Query
         query={QUERY}
-        // notifyOnNetworkStatusChange={true}
         variables={{
             page: 1
         }}
@@ -99,7 +98,7 @@ const MovieCard = (props) => (
             if (loading) return <div style={{color: 'white', width: '100vw', display: 'flex', justifyContent: 'center', marginTop: '50px'}}><Icon size={58} icon={spinner10} /></div>;
             if (error) return <p>Error :(</p>;
             return (
-                <MovieFeed 
+                <MovieFeedWithRouter
                     movies={data.getPopularMovies || []} 
                     onLoadMore={(page) => {
                         return (fetchMore({
@@ -125,4 +124,4 @@ const MovieCard = (props) => (
     </Query>
 );
 
-export default withRouter(MovieCard);
+export default MovieCard;
