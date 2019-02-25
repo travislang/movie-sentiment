@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink, Link, withRouter} from 'react-router-dom';
 import styled from 'styled-components';
+import Icon from 'react-icons-kit';
+import { spinner10 } from 'react-icons-kit/icomoon/spinner10'
 
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
@@ -37,26 +39,34 @@ const QUERY = gql`
         }
     `
 class MovieFeed extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {page: 1}
-        console.log('create', props.onLoadMore);
-            
-            window.onscroll = () => {
-                console.log('document.documentElement.offsetHeight', document.documentElement.offsetHeight);
-                
-                if (
-                    window.innerHeight + document.documentElement.scrollTop
-                    >= document.documentElement.offsetHeight - 100
-                ) {
-                    this.setState({
-                        page: this.state.page + 1
-                    })
-                    props.onLoadMore(this.state.page);
-                }
-            };
-        }
+       
+    state = {
+        page: 2
+    }
 
+    componentDidMount() {
+        window.addEventListener("scroll", this.handleOnScroll);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("scroll", this.handleOnScroll);
+    }
+
+    handleOnScroll = () => {
+        let scrollTop =
+            (document.documentElement && document.documentElement.scrollTop);
+        let scrollHeight =
+            (document.documentElement && document.documentElement.scrollHeight);
+        let clientHeight =
+            document.documentElement.clientHeight || window.innerHeight;
+        let scrolledToBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight;
+        if (scrolledToBottom) {
+            this.props.onLoadMore(this.state.page);
+            this.setState({
+                page: this.state.page + 1
+            })
+        }
+    };
 
     render() {
         const { movies = [], onLoadMore, ...props } = this.props;
@@ -79,28 +89,26 @@ class MovieFeed extends Component {
 const MovieCard = (props) => (
     <Query
         query={QUERY}
+        // notifyOnNetworkStatusChange={true}
         variables={{
             page: 1
         }}
     >
         {({ loading, error, data, fetchMore, variables }) => {
             
-            if (loading) return <p>Loading...</p>;
+            if (loading) return <div style={{color: 'white', width: '100vw', display: 'flex', justifyContent: 'center', marginTop: '50px'}}><Icon size={58} icon={spinner10} /></div>;
             if (error) return <p>Error :(</p>;
-                console.log('d', variables);
-                
             return (
                 <MovieFeed 
                     movies={data.getPopularMovies || []} 
                     onLoadMore={(page) => {
-                        console.log('inloadmore', page);
-                        
                         return (fetchMore({
                             variables: {
                                 page: page,
                             },
                             updateQuery: (prev, { fetchMoreResult }) => {
                                 if (!fetchMoreResult) return prev;
+
                                 return Object.assign({}, prev, {
                                     getPopularMovies: [...prev.getPopularMovies, ...fetchMoreResult.getPopularMovies],
                                 });
