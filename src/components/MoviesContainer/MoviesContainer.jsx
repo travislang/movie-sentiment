@@ -46,7 +46,7 @@ const Heading = styled.p`
     margin-bottom: 25px;
 `
 
-const Filter = styled.p`
+const Filter = styled.div`
     font-size: 2em;
     letter-spacing: 1px;
     max-width: 50vw;
