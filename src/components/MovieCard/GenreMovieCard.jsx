@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { NavLink, Link, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
+import Icon from 'react-icons-kit';
+import { spinner10 } from 'react-icons-kit/icomoon/spinner10'
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 
@@ -22,34 +24,104 @@ const Title = styled.h3`
     color: white;
 `
 
-const handleClick = (props, id) => {
-    props.history.push(`/details/${id}`)
+const QUERY = gql`
+        query discoverMovies($page: Int, $genre: Int!) {
+            discoverMovies(page: $page, genre: $genre) {
+                id
+                name
+                posterPath
+            }
+        }
+    `
+
+class MovieFeed extends Component {
+
+    state = {
+        page: 2
+    }
+
+    componentDidMount() {
+        window.addEventListener("scroll", this.handleOnScroll);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("scroll", this.handleOnScroll);
+    }
+
+    handleOnScroll = () => {
+        let scrollTop =
+            (document.documentElement && document.documentElement.scrollTop);
+        let scrollHeight =
+            (document.documentElement && document.documentElement.scrollHeight);
+        let clientHeight =
+            document.documentElement.clientHeight || window.innerHeight;
+        let scrolledToBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight;
+        if (scrolledToBottom) {
+            this.props.onLoadMore(this.state.page);
+            this.setState({
+                page: this.state.page + 1
+            })
+        }
+    };
+
+    handleClick = (id) => {
+        this.props.history.push(`/details/${id}`)
+    }
+
+    render() {
+        const { movies = [], onLoadMore, ...props } = this.props;
+        return (
+            <>
+                {movies.map(({ name, id, posterPath }) => (
+                    <Div key={id}>
+                        <Img onClick={() => this.handleClick(id)} src={`http://image.tmdb.org/t/p/w342/${posterPath}`} />
+                        <Title>
+                            {name}
+                        </Title>
+                    </Div>
+                ))}
+            </>
+        )
+    }
 }
+
+const GenreMovieFeedWithRouter = withRouter(MovieFeed);
 
 const GenreMovieCard = (props) => (
     <Query
-        query={gql`
-      {
-        discoverMovies(genre: ${props.genreId}) {
-            id
-            name
-            posterPath
-        }
-      }
-    `}
+        query={QUERY}
+        variables={{
+            page: 1,
+            genre: Number(props.match.params.id)
+        }}
     >
-        {({ loading, error, data }) => {
-            if (loading) return <p>Loading...</p>;
+        {({ loading, error, data, fetchMore, variables }) => {
+            console.log('variables', variables);
+            
+            if (loading) return <div style={{ color: 'white', width: '100vw', display: 'flex', justifyContent: 'center', marginTop: '50px' }}><Icon size={58} icon={spinner10} /></div>;
             if (error) return <p>Error :(</p>;
+            
+            return (
+                <GenreMovieFeedWithRouter
+                    movies={data.discoverMovies || []}
+                    onLoadMore={(page) => {
+                        return (fetchMore({
+                            variables: {
+                                page: page,
+                                genre: variables.genre
+                            },
+                            updateQuery: (prev, { fetchMoreResult }) => {
+                                if (!fetchMoreResult) return prev;
 
-            return data.discoverMovies.map(({ name, id, posterPath }) => (
-                <Div key={id}>
-                    <Img onClick={() => handleClick(props, id)} src={`http://image.tmdb.org/t/p/w342/${posterPath}`} />
-                    <Title>
-                        {name}
-                    </Title>
-                </Div>
-            ));
+                                return Object.assign({}, prev, {
+                                    discoverMovies: [...prev.discoverMovies, ...fetchMoreResult.discoverMovies],
+                                });
+                            },
+                        }))
+                    }
+                    }
+                />
+            )
         }}
     </Query>
 );

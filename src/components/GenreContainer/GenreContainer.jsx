@@ -35,7 +35,7 @@ const Div = styled.div`
     justify-content: space-between;
 `
 
-const Filter = styled.p`
+const Filter = styled.div`
     font-size: 2em;
     letter-spacing: 1px;
     max-width: 50vw;
