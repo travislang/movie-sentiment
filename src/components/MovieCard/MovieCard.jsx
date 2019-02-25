@@ -23,6 +23,28 @@ const Title = styled.h3`
     padding: 5px;
     color: white;
 `
+const LoaderContainer = styled.span`
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+`
+const Loader = styled(Icon)`
+    height: 58px;
+    color: #d2202f;
+    animation-duration: 3s;
+    animation-name: spin;
+    animation-iteration-count: infinite;
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+`
 
 const QUERY = gql`
         query getPopularMovies($page: Int) {
@@ -95,7 +117,7 @@ const MovieCard = (props) => (
     >
         {({ loading, error, data, fetchMore, variables }) => {
             
-            if (loading) return <div style={{color: 'white', width: '100vw', display: 'flex', justifyContent: 'center', marginTop: '50px'}}><Icon size={58} icon={spinner10} /></div>;
+            if (loading) return <LoaderContainer><Loader size={58} icon={spinner10} /></LoaderContainer>;
             if (error) return <p>Error :(</p>;
             return (
                 <MovieFeedWithRouter
