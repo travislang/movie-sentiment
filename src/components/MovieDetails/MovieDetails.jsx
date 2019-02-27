@@ -9,6 +9,10 @@ import RecommendedMovies from '../RecommendedMovies/RecommendedMovies';
 import SimilarMovies from '../SimilarMovies/SimilarMovies';
 import CastContainer from '../CastContainer/CastContainer';
 
+import Icon from 'react-icons-kit';
+import { twitter } from 'react-icons-kit/icomoon/twitter';
+
+
 const Div = styled.div`
     width: 100vw;
     min-height: 100vh;
@@ -43,6 +47,7 @@ const Title = styled.h1`
     margin: 0;
     padding: 5px;
     color: white;
+    font-weight: 300;
 `
 const Tagline = styled.h3`
     margin: 0;
@@ -136,10 +141,16 @@ const MovieDetails = (props) => {
                                         <Title>{movie.name}</Title>
                                         <Tagline>{movie.tagline}</Tagline>
                                     </div>
-                                    <div>
+                                    <div style={{display: 'flex', alignItems: 'center', color: 'white'}}>
+                                        <Icon
+                                            size={35}
+                                            className='searchIcon'
+                                            icon={twitter}
+                                        />
                                         <Title>
-                                            IntelliRating: 
-                                            <span style={{ fontWeight: 300, paddingLeft: 10, color: '#20D24A'}}>
+                                            
+                                            Rating: 
+                                            <span style={{ fontWeight: 400, paddingLeft: 10, color: '#20D24A'}}>
                                                 8.9/10
                                             </span>
                                         </Title>
