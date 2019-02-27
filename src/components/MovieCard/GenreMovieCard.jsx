@@ -94,7 +94,11 @@ class MovieFeed extends Component {
             <>
                 {movies.map(({ name, id, posterPath }) => (
                     <Div key={id}>
-                        <Img onClick={() => this.handleClick(id)} src={`http://image.tmdb.org/t/p/w342/${posterPath}`} />
+                        {posterPath ?
+                            <Img onClick={() => this.handleClick(id)} src={`http://image.tmdb.org/t/p/w342/${posterPath}`} />
+                            :
+                            <Img src={`assets/noimage.jpg`} />
+                        }
                         <Title>
                             {name}
                         </Title>
