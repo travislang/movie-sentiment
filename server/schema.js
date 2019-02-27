@@ -13,6 +13,11 @@ module.exports = gql`
         profilePath: String
     }
 
+    type Tweet{
+        id: Int!
+        text: String!
+    }
+
     type Movie {
         name: String!
         id: Int!
@@ -34,6 +39,7 @@ module.exports = gql`
         getCast(movieId: Int!): [Person!]!
         movieDetails(movieId: Int!): Movie!
         searchMovie(title: String!): [Movie]!
+        getTweets(term: String!): [Tweet!]!
     }
 `;
 

@@ -50,7 +50,6 @@ module.exports = {
     },
     Person: {
         id: (parent, args, context, info) => {
-            console.log('p', parent);
             return parent.cast_id;
         },
         name: (parent, args, context, info) => {
@@ -58,6 +57,14 @@ module.exports = {
         },
         profilePath: (parent, args, context, info) => {
             return parent.profile_path;
+        },
+    },
+    Tweet: {
+        id: (parent, args, context, info) => {
+            return parent.id;
+        },
+        text: (parent, args, context, info) => {
+            return parent.text;
         },
     },
     Movie: {
@@ -141,6 +148,22 @@ module.exports = {
                 .then(response => {
                     return response.data.results
                 })
-        }
+        },
+        getTweets: (parent, args, context, info) => {
+            console.log('in tweets', args.term);
+            return axios({
+                method: 'GET',
+                url: `https://api.twitter.com/1.1/search/tweets.json?q=${args.term}%20movie&lang=en`,
+                headers: {
+                    Authorization: `Bearer ${process.env.TWITTER_BEARER_TOKEN}`
+                }
+            })
+                .then(response => {
+                    return response.data.statuses
+                })
+                .catch(err => {
+                    console.log('error in axios', err);
+                })
+        },
     },
 }
