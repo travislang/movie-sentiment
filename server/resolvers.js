@@ -138,6 +138,8 @@ module.exports = {
                 })
         },
         getTweetRating: (parent, args, context, info) => {
+            console.log('args', args.term);
+            
             return axios({
                 method: 'GET',
                 url: `https://api.twitter.com/1.1/search/tweets.json?q=${args.term}%20movie&lang=en`,

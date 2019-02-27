@@ -8,6 +8,7 @@ import gql from "graphql-tag";
 import RecommendedMovies from '../RecommendedMovies/RecommendedMovies';
 import SimilarMovies from '../SimilarMovies/SimilarMovies';
 import CastContainer from '../CastContainer/CastContainer';
+import TwitterRating from './TwitterRating';
 
 import Icon from 'react-icons-kit';
 import { twitter } from 'react-icons-kit/icomoon/twitter';
@@ -151,7 +152,7 @@ const MovieDetails = (props) => {
                                             
                                             Rating: 
                                             <span style={{ fontWeight: 400, paddingLeft: 10, color: '#20D24A'}}>
-                                                8.9/10
+                                                <TwitterRating searchTerm={movie.name} />
                                             </span>
                                         </Title>
                                     </div>
