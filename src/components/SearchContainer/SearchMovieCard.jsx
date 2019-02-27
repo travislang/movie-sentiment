@@ -67,7 +67,11 @@ class MovieFeed extends Component {
             <>
                 {movies.map(({ name, id, posterPath }) => (
                     <Div key={id}>
-                        <Img onClick={() => this.handleClick(id)} src={`http://image.tmdb.org/t/p/w342/${posterPath}`} />
+                        {profilePath ?
+                            <Img onClick={() => this.handleClick(id)} src={`http://image.tmdb.org/t/p/w342/${posterPath}`} />
+                            :
+                            <Img src={`assets/noimage.jpg`} />
+                        }
                         <Title>
                             {name}
                         </Title>
@@ -80,23 +84,31 @@ class MovieFeed extends Component {
 
 const MovieFeedWithRouter = withRouter(MovieFeed);
 
-const MovieCard = (props) => (
-    <Query
-        query={QUERY}
-    >
-        {({ loading, error, data, fetchMore, variables }) => {
+const MovieCard = (props) => {
+    console.log('path', props.match.params.title);
+    
+    return (
+        <Query
+            query={QUERY}
+            variables={{
+                title: props.match.params.title
+            }}
+        >
+            {({ loading, error, data }) => {
 
-            if (loading) return <LoaderContainer><Loader size={58} icon={spinner10} /></LoaderContainer>;
-            if (error) return <p>Error :(</p>;
-            return (
-                <MovieFeedWithRouter
-                    movies={data.getPopularMovies || []}
-                />
-            )
+                if (loading) return <LoaderContainer><Loader size={58} icon={spinner10} /></LoaderContainer>;
+                if (error) return <p>Error :(</p>;
+                return (
+                    <MovieFeedWithRouter
+                        movies={data.searchMovie || []}
+                    />
+                )
 
 
-        }}
-    </Query>
-);
+            }}
+        </Query>
+    )
+}
+    
 
-export default MovieCard;
+export default withRouter(MovieCard);

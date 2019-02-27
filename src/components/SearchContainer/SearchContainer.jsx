@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import MovieCardGql from '../MovieCard/MovieCard';
+import MovieCard from './SearchMovieCard';
 
-import Icon from 'react-icons-kit';
-import { ic_arrow_drop_down } from 'react-icons-kit/md/ic_arrow_drop_down'
-import { ic_arrow_drop_up } from 'react-icons-kit/md/ic_arrow_drop_up'
-import onClickOutside from "react-onclickoutside";
-
-import FilterList from './FilterList';
 
 const Root = styled.div`
     box-sizing: border-box;
@@ -60,7 +54,7 @@ class SearchContainer extends Component {
                     </Heading>
                 </Div>
                 <Grid>
-                    <MovieCardGql />
+                    <MovieCard />
                 </Grid>
             </Root>
         );

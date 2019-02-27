@@ -4,6 +4,7 @@ import Appbar from './components/Appbar/Appbar';
 import MoviesContainer from './components/MoviesContainer/MoviesContainer';
 import MovieDetails from './components/MovieDetails/MovieDetails';
 import GenreContainer from './components/GenreContainer/GenreContainer';
+import SearchContainer from './components/SearchContainer/SearchContainer';
 
 import {
     HashRouter,
@@ -43,6 +44,11 @@ class App extends Component {
                         exact
                         path="/genre/:id"
                         component={GenreContainer}
+                    />
+                    <Route
+                        exact
+                        path="/search/:title"
+                        component={SearchContainer}
                     />
                 </Switch>
             </React.Fragment>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink, Link, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import Icon from 'react-icons-kit';
 import { search } from 'react-icons-kit/icomoon/search'
@@ -56,6 +57,10 @@ class SearchInput extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+        this.props.history.push(`/search/${this.state.term}`)
+        this.setState({
+            term: ''
+        })
     }
 
     render() {
@@ -76,4 +81,4 @@ class SearchInput extends Component {
     }
 }
 
-export default SearchInput;
+export default withRouter(SearchInput);

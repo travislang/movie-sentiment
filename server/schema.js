@@ -21,7 +21,7 @@ module.exports = gql`
     type Movie {
         name: String!
         id: Int!
-        posterPath: String!
+        posterPath: String
         backdropPath: String!
         genres: [Genre!]!
         overview: String!

@@ -132,6 +132,8 @@ module.exports = {
                 })
         },
         searchMovie: (parent, args, context, info) => {
+            console.log('in search movies', args.title);
+            
             return axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDBAPI}&language=en-US&query=${args.title}&page=1&include_adult=false`)
                 .then(response => {
                     return response.data.results
