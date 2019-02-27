@@ -39,7 +39,8 @@ module.exports = gql`
         getCast(movieId: Int!): [Person!]!
         movieDetails(movieId: Int!): Movie!
         searchMovie(title: String!): [Movie]!
-        getTweets(term: String!): [Tweet!]!
+        getTweetRating(term: String!): String!
+        getRating: String!
     }
 `;
 
