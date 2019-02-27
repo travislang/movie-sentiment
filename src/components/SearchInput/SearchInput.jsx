@@ -44,17 +44,33 @@ const Button = styled.button`
 `
 
 class SearchInput extends Component {
+    state = {
+        term: ''
+    }
+
+    handleChange = (e) => {
+        this.setState({
+            term: e.target.value
+        })
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+    }
+
     render() {
         return (
             <Root>
-                <Searchbar type='search' placeholder='Search for a movie...' />
-                <Button>
-                    <Icon
-                        size={20}
-                        className='searchIcon'
-                        icon={search} 
-                    />
-                </Button>
+                <form onSubmit={this.handleSubmit}>
+                    <Searchbar onChange={this.handleChange} value={this.state.term} type='search' placeholder='Search for a movie...' />
+                    <Button onClick={this.handleSubmit}>
+                        <Icon
+                            size={20}
+                            className='searchIcon'
+                            icon={search}
+                        />
+                    </Button>
+                </form>
             </Root>
         );
     }
