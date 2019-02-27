@@ -22,10 +22,6 @@ const Title = styled.h6`
     color: white;
 `
 
-const handleClick = (props, id) => {
-    props.history.push(`/details/${id}`)
-}
-
 const CastCard = (props) => (
     <Query
         query={gql`
@@ -45,9 +41,9 @@ const CastCard = (props) => (
             return data.getCast.map(({ name, id, profilePath }) => (
                 <Div key={id}>
                     {profilePath ?
-                        <Img onClick={() => handleClick(props, id)} src={`http://image.tmdb.org/t/p/w185/${profilePath}`} />
+                        <Img src={`http://image.tmdb.org/t/p/w185/${profilePath}`} />
                         :
-                        <Img onClick={() => handleClick(props, id)} src={`assets/empty-profile-pic.jpg`} />
+                        <Img src={`assets/empty-profile-pic.jpg`} />
                     }
                     <Title>
                         {name}
