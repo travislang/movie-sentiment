@@ -1,16 +1,12 @@
 const sequelize = require('./modules/orm.config');
 const Genre = require('./models/genre.model');
 const axios = require('axios');
+const Sentiment = require('sentiment');
+const sentiment = new Sentiment;
+
 Genre.sync();
 
 
-// type Movie {
-//     name: String!
-//     posterPath: String!
-//     genres: [Genre!]!
-//     overview: String!
-//     releaseDate: String!
-// }
 const getMovieGenres = (parent, args, context, info) => {
     if (parent.genre_ids) {
         return Genre.findAll({
@@ -57,14 +53,6 @@ module.exports = {
         },
         profilePath: (parent, args, context, info) => {
             return parent.profile_path;
-        },
-    },
-    Tweet: {
-        id: (parent, args, context, info) => {
-            return parent.id;
-        },
-        text: (parent, args, context, info) => {
-            return parent.text;
         },
     },
     Movie: {
@@ -149,8 +137,7 @@ module.exports = {
                     return response.data.results
                 })
         },
-        getTweets: (parent, args, context, info) => {
-            console.log('in tweets', args.term);
+        getTweetRating: (parent, args, context, info) => {
             return axios({
                 method: 'GET',
                 url: `https://api.twitter.com/1.1/search/tweets.json?q=${args.term}%20movie&lang=en`,
@@ -159,11 +146,25 @@ module.exports = {
                 }
             })
                 .then(response => {
-                    return response.data.statuses
+                    return analyzeTweets(response.data.statuses);
                 })
                 .catch(err => {
                     console.log('error in axios', err);
                 })
         },
     },
+}
+
+function analyzeTweets(tweets) {
+    let rating = 0;
+    let count = 0;
+    for(tweet of tweets) {
+        let result = sentiment.analyze(tweet.text);
+        if(result.comparative != 0) {
+            count++;
+        }
+        rating += result.comparative;
+    }
+    rating = rating / count;
+    return rating;
 }
