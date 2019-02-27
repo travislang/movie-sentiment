@@ -21,7 +21,6 @@ const Root = styled.div`
     flex-direction: column;
     justify-content: flex-start;
 `
-
 const Grid = styled.div`
     width: 100%;
     display: grid;
@@ -34,7 +33,6 @@ const Div = styled.div`
     align-items: center;
     justify-content: space-between;
 `
-
 const Filter = styled.div`
     font-size: 2em;
     letter-spacing: 1px;
@@ -55,7 +53,6 @@ const FilterDropdown = styled.div`
     left: 0;
     right: 0;
 `
-
 
 class HeroContainer extends Component {
 

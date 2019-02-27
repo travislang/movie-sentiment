@@ -39,7 +39,6 @@ const Loader = styled(Icon)`
         from {
             transform: rotate(0deg);
         }
-
         to {
             transform: rotate(360deg);
         }
@@ -57,7 +56,6 @@ const QUERY = gql`
     `
 
 class MovieFeed extends Component {
-
     state = {
         page: 2
     }
