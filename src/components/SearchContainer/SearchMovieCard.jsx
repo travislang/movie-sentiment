@@ -64,10 +64,11 @@ class MovieFeed extends Component {
     render() {
         const { movies = [], onLoadMore, ...props } = this.props;
         return (
+                movies.length > 0 ?
             <>
                 {movies.map(({ name, id, posterPath }) => (
                     <Div key={id}>
-                        {profilePath ?
+                        {posterPath ?
                             <Img onClick={() => this.handleClick(id)} src={`http://image.tmdb.org/t/p/w342/${posterPath}`} />
                             :
                             <Img src={`assets/noimage.jpg`} />
@@ -78,6 +79,10 @@ class MovieFeed extends Component {
                     </Div>
                 ))}
             </>
+            :
+            <div>
+                <h1 style={{color: 'white'}}>No Results...</h1>
+            </div>
         )
     }
 }
