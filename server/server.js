@@ -8,6 +8,7 @@ const resolvers = require('./resolvers');
 const app = express();
 const PORT = process.env.PORT || 5050;
 
+app.use(express.static('build'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -21,5 +22,5 @@ const server = new ApolloServer({
 server.applyMiddleware({ app, cors: true });
 
 app.listen(PORT, () => {
-    console.log(`Server ready at http://localhost:${PORT}${server.graphqlPath}`);
+    console.log(`Server ready at ${PORT}${server.graphqlPath}`);
 });
