@@ -4,11 +4,11 @@
 A full Stack movie information application that uses Twitter tweets to generate a movie rating based on sentimental analysis to give users a rating based on real peoples opinions.  It also uses GraphQL for a baxckend API and has search and filter functionality along with generating similar and recommended movies.
 
 ## Screen Shots
-![screenshot](/public/images/home-page.png)
+![screenshot](/public/assets/home-page.png)
 
-![screenshot](/public/images/movie-details.png)
+![screenshot](/public/assets/movie-details.png)
 
-![screenshot](/public/images/similar-movies.png)
+![screenshot](/public/assets/similar-movies.png)
 
 ## Built With
 
